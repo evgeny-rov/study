@@ -29,8 +29,7 @@ If you do not want to use any of the standard fonts in HTML,
 you can use the Google Fonts API to add hundreds of other fonts to your page.
 
 Just add a stylesheet link and refer to a font family of your choice:
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"
 
 ## Lists
 
@@ -79,12 +78,12 @@ Every selector has its place in the specificity hierarchy.
 There are four categories which define the specificity level of a selector:
 
 Inline styles - An inline style is attached directly to the element to be styled.  
-Example: <h1 style="color: #ffffff;">.
+Example: h1 style="color: #ffffff;".
 
 IDs - An ID is a unique identifier for the page elements, such as #navbar.
 
 Classes, attributes and pseudo-classes - This category  
-includes .classes, [attributes] and pseudo-classes such as :hover, :focus etc.
+includes .classes, attributes and pseudo-classes such as :hover, :focus etc.
 
 Elements and pseudo-elements - This category  
 includes element names and pseudo-elements, such as h1, div, :before and :after.
