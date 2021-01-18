@@ -1,4 +1,4 @@
-// free-response questions from: 
+// solutions for free-response questions from: 
 // http://compscimadison.weebly.com/uploads/5/8/7/4/58741529/ap-computer-science-a-2014-practice-exam.pdf
 
 const recombine = (word1, word2) => {
@@ -62,3 +62,69 @@ const computeTemp = (row, col) => {
 
   return ((above + below + left + right) / 4).toFixed(1);
 };
+
+const updateAllTemps = (tolerance) => {
+  let isWithinTolerance = true;
+
+  const newTemps = temps
+    .map((row, rowIdx) => row
+      .map((cell, cellIdx) => computeTemp(rowIdx, cellIdx)));
+  
+  newTemps
+    .forEach((row, rowIdx) => row
+      .forEach((cell, cellIdx) => {
+        if (isWithinTolerance && Math.abs(cell - temps[rowIdx][cellIdx]) <= tolerance) {
+          isWithinTolerance = false;
+        }
+
+        temps[rowIdx][cellIdx] = cell;
+      }));
+
+
+  return isWithinTolerance;
+};
+
+// ----
+
+class ScoreInfo {
+  constructor(score) {
+    this.score = score;
+    this.numOfStudents = 1;
+  }
+
+  increment() {
+    this.numOfStudents++;
+  }
+
+  getScore() {
+    return this.score;
+  }
+
+  getFrequency() {
+    return this.numOfStudents;
+  }
+}
+
+class Stats {
+  constructor() {
+    this.scoreList = [];
+  }
+
+  record(score) {
+    const foundScore = this.scoreList.find((scInfo) => scInfo.getScore() === score);
+
+    if (foundScore) {
+      foundScore.increment();
+      return false;
+    } else {
+      const newScore = new ScoreInfo(score);
+      this.scoreList.push(newScore);
+      this.scoreList.sort((scInfo1, scInfo2) => scInfo1.getScore() - scInfo2.getScore());
+      return true;
+    }
+  }
+
+  recordScores(newScores) {
+    for (const value of newScores) this.record(value);
+  }
+}
