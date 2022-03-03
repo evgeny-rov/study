@@ -16,7 +16,6 @@ const treeWalker = (div) => {
   }
   
   ///// teacher's solution
-  //this solution is so clean holy macaroni
   
   export default (document) => {
     const divs = document.getElementsByTagName('div');
